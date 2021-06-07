@@ -4,44 +4,44 @@ require('dotenv').config();
 //console.log(process.env.DISCORDJS_BOT_TOKEN);
 
 //We are importing client (its a class), from the discord.js
+//Also importing path/fs, based off of Worn-Off-Keys tutorial for a command_base
 const { Client } = require('discord.js');
-
-//Importing individual classes for code readibility
-const gbf_w = require('./gbf_wiki.js');
+const path = require('path')
+const fs = require('fs')
 
 //Creating the class
 //Partials allow for previously stored objects in cache to be referenced
 const bot_client = new Client({
     partials: ['MESSAGE', 'REACTION']
 });
-const PREFIX = "%"
+const PREFIX = process.env.PREFIX;
 
 //Logs that the bot has logged on
-bot_client.on('ready', () => {
-    console.log(`${bot_client.user.tag} has logged in`)
+bot_client.on('ready', async () => {
+    console.log(`${bot_client.user.tag} has logged in`);
+
+    const baseFile = 'base_cmd.js';
+    const templateFile = 'command_template.js';
+    const commandBase = require(`./commands/${baseFile}`)
+
+    const readCommands = (dir) => {
+        const files = fs.readdirSync(path.join(__dirname, dir));
+        for (const file of files) {
+            const stat = fs.lstatSync(path.join(__dirname, dir, file));
+            if (stat.isDirectory()) {
+                readCommands(path.join(dir, file))
+            }
+            else if (file !== baseFile && file !== templateFile) {
+                const option = require(path.join(__dirname, dir, file))
+                commandBase(bot_client, option)
+            }
+        }
+    }
+
+    readCommands('commands');
 })
 
 /*
-
-Example code for the message, reference if need to know how it worked
-
-bot_client.on('message', (message) => {
-    if (message.author.bot) return;
-    console.log(`[${message.author.tag}]: ${message.content}`)
-    //message.content has the actual string
-    if (message.content === 'hello') {
-        //message.reply will tag the user
-        //code
-        //message.reply(`Hello!`)
-
-        //If we want to send the message to the channel without pinging (specific), we need to use the code below
-        message.channel.send('hello')
-        //Send will default not ignore bot messages, we need to watch out for it
-        //If statement in the top will ignore bot messages
-    }
-})
-*/
-
 //Code for reading prefixes
 bot_client.on('message', (message) => {
     if (message.author.bot) return;
@@ -96,6 +96,7 @@ function pokeUser(message, args) {
     }
 }
 
+*/
 
 //Logging into the client
 bot_client.login(process.env.DISCORDJS_BOT_TOKEN);
