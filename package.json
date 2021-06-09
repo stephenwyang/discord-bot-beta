@@ -14,7 +14,15 @@
   "dependencies": {
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
+    "module-alias": "^2.2.2",
     "mongodb": "^3.6.9",
     "mongoose": "^5.12.13"
+  },
+  "_moduleAliases": {
+    "@root": "./src",
+    "@schemas": "./src/schemas",
+    "@util": "./src/util",
+    "@features": "./src/features/features",
+    "@commands": "./src/commands/command"
   }
 }

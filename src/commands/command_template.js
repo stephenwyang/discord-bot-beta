@@ -1,5 +1,5 @@
 module.exports = {
-    commands: [],
+    commands: ['test'],
     expectedArgs: '', 
     permissionError: 'You don\'t have permission to run this command!',
     badArgsError: 'Incorrect number of arguments',
