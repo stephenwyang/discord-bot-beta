@@ -11,7 +11,12 @@ const gbfCharSchema = mongoose.Schema({
     rarity: String,
     element: String,
     ougi: [String],
+    sklTitle1: {
+        type: String,
+        default: "Skills"
+    },
     sklSet1: [],
+    sklTitle1: String,
     sklSet2: {
         type: [],
         default: undefined
