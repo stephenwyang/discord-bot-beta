@@ -1,0 +1,2 @@
+https://zetcode.com/javascript/cheerio/
+https://hackernoon.com/a-guide-to-web-scraping-with-javascript-and-nodejs-i21l3te1
