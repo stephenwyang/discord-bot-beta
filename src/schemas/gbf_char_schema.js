@@ -8,6 +8,7 @@ const reqString = {
 const gbfCharSchema = mongoose.Schema({
     _id: reqString,
     name: reqString,
+    title: String,
     rarity: String,
     element: String,
     ougi: [String],
