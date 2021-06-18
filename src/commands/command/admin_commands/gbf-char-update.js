@@ -13,6 +13,7 @@ module.exports = {
         //TODO: Implement functionality
         //console.log("Testing web-scraping")
         //extractInfo("https://gbf.wiki/Narmaya_(Holiday)")
+        console.log("Update functionality soon!")
     },
     permissions: [],
     requiredRoles: [],
