@@ -19,6 +19,11 @@ module.exports = async (url) => {
         console.log(charEle);
         //To get ougi/charge attack, table is in $(".table-container").eq(1)
         //Figuring out how to extract those values next
+        //In JQuery, $(".wikitable>tbody>tr:gt(1)",".table-container:eq(1)").text()
+        //Will extract all the values for the "ougi", but is unable to split between lines
+        //Figure out how to extract for cheerio
+        //var charOugi = $(".wikitable>tbody>tr",".table-container").eq(1).text()
+        //console.log(charOugi)
     })
     //error handling
     .catch(err => {
