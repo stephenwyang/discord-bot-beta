@@ -26,8 +26,9 @@ module.exports = async (url) => {
         // Still can't translate it to cheerio tho
         //Will extract all the values for the "ougi", but is unable to split between lines
         //Figure out how to extract for cheerio
-        var charOugi = $(".wikitable>tbody>tr",".table-container").eq(1).text()
-        console.log(charOugi)
+        // var charOugi = $(".wikitable>tbody>tr",".table-container:eq(1)").text()
+        var test1 = $(".table-container:eq(1)").text()
+        console.log(test1)
     })
     //error handling
     .catch(err => {
