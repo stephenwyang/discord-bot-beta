@@ -31,12 +31,18 @@ module.exports = async (url) => {
         
         $(".table-container:eq(1)").each(function(i, elem) {
             $(".wikitable>tbody>tr",this).children().each(function (i, elem) {
-                if(i > 3 && (i - 1) % 3 !== 0) {
-                    console.log($(this).text()) 
+                if(i > 3) {
+                    //console.log(i);
+                    if ((i-1) % 3 === 0) {
+                        console.log("\n")
+                    }
+
+                    // Want to remove the tooltip-text, mess around with it later
+
+                    else { console.log($(this).text()) }
                 }
             })
         })
-
 
     })
     //error handling
