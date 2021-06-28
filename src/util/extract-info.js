@@ -27,8 +27,17 @@ module.exports = async (url) => {
         //Will extract all the values for the "ougi", but is unable to split between lines
         //Figure out how to extract for cheerio
         // var charOugi = $(".wikitable>tbody>tr",".table-container:eq(1)").text()
-        var test1 = $(".table-container:eq(1)").text()
-        console.log(test1)
+        //var test1 = $(".table-container:eq(1)").text()
+        
+        $(".table-container:eq(1)").each(function(i, elem) {
+            $(".wikitable>tbody>tr",this).children().each(function (i, elem) {
+                if(i > 3 && (i - 1) % 3 !== 0) {
+                    console.log($(this).text()) 
+                }
+            })
+        })
+
+
     })
     //error handling
     .catch(err => {
