@@ -29,17 +29,31 @@ module.exports = async (url) => {
         // var charOugi = $(".wikitable>tbody>tr",".table-container:eq(1)").text()
         //var test1 = $(".table-container:eq(1)").text()
         
+        const ougiNames = [];
+        const ougiDescipt = [];
+        var ougiIdx = -1;
+
         $(".table-container:eq(1)").each(function(i, elem) {
             $(".wikitable>tbody>tr",this).children().each(function (i, elem) {
                 if(i > 3) {
                     //console.log(i);
-                    if ((i-1) % 3 === 0) {
-                        console.log("\n")
+                    if ( (i-1) % 3 === 0 ) {
+                        console.log("")
+                        //ougiIdx += 1;
                     }
-
-                    // Want to remove the tooltip-text, mess around with it later
-
-                    else { console.log($(this).text()) }
+                    // Currently will remove all .tooltiptext values (Extra info), want to have a way to add it in a way thats
+                    // less intrusive
+                    else if ( (i-2) % 3 === 0 ) {
+                        //ougiNames[ougiIdx] = 
+                        console.log($(this).text())
+                    }
+                    else { 
+                        //console.log($(".tooltip>tooltiptext", this).remove().end().text()) 
+                        $(".tooltip", this).each( function (i, elem) {
+                            $(".tooltiptext", this).remove()
+                        })
+                        console.log($(this).text())
+                    }
                 }
             })
         })
