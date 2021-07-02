@@ -17,7 +17,7 @@ const gbfCharSchema = mongoose.Schema({
         default: "Skills"
     },
     sklSet1: [],
-    sklTitle1: String,
+    sklTitle2: String,
     sklSet2: {
         type: [],
         default: undefined

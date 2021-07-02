@@ -18,16 +18,7 @@ module.exports = async (url) => {
         var charEle = getElement($('tr>td', ".tabbertab[title='Stats']").eq(2).text());
         //console.log(charEle);
 
-        //To get ougi/charge attack, table is in $(".table-container").eq(1)
-        //Figuring out how to extract those values next
-        //In JQuery, $(".wikitable>tbody>tr:gt(1)",".table-container:eq(1)").text()
-        // $(".wikitable>tbody>tr:gt(1)",".table-container:eq(1)").children().each(function (i, elem) { console.log($(this).text()) })
-        // This will get each td and display is, but still has the problem of the children (can prob do the remove stuff from before)
-        // Still can't translate it to cheerio tho
-        //Will extract all the values for the "ougi", but is unable to split between lines
-        //Figure out how to extract for cheerio
-        // var charOugi = $(".wikitable>tbody>tr",".table-container:eq(1)").text()
-        //var test1 = $(".table-container:eq(1)").text()
+        // This is the code for extracting the Ougi/Charge Attack
         
         const ougiNames = [];
         const ougiDescript = [];
@@ -59,6 +50,23 @@ module.exports = async (url) => {
                         console.log(ougiDescript[ougiIdx])
                     }
                 }
+            })
+        })
+
+        //console.log(ougiDescript.length)
+
+        //This is for getting the skill data
+        //Might need to make new form for dual form characters, (specific cases)
+        //For dual form charas, most of them have a .table-container length of 9
+        //Might be able to make a filter for that
+
+        $(".table-container:eq(2)").each (function (i, elem) {
+            $(".wikitable>tbody>tr", this).children().each( function (i, elem) {
+                if (i === 0 || i > 6) {
+                    console.log(i)
+                    console.log($(this).text())
+                }
+                
             })
         })
 
