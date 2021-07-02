@@ -30,7 +30,7 @@ module.exports = async (url) => {
         //var test1 = $(".table-container:eq(1)").text()
         
         const ougiNames = [];
-        const ougiDescipt = [];
+        const ougiDescript = [];
         var ougiIdx = -1;
 
         $(".table-container:eq(1)").each(function(i, elem) {
@@ -38,21 +38,25 @@ module.exports = async (url) => {
                 if(i > 3) {
                     //console.log(i);
                     if ( (i-1) % 3 === 0 ) {
-                        console.log("")
-                        //ougiIdx += 1;
+                        //console.log("")
+                        ougiIdx += 1;
+                        console.log(ougiIdx)
                     }
                     // Currently will remove all .tooltiptext values (Extra info), want to have a way to add it in a way thats
-                    // less intrusive
+                    // less intrusive in the future
                     else if ( (i-2) % 3 === 0 ) {
-                        //ougiNames[ougiIdx] = 
-                        console.log($(this).text())
+                        ougiNames[ougiIdx] = $(this).text()
+                        //console.log($(this).text())
+                        console.log(ougiNames[ougiIdx])
                     }
                     else { 
                         //console.log($(".tooltip>tooltiptext", this).remove().end().text()) 
                         $(".tooltip", this).each( function (i, elem) {
                             $(".tooltiptext", this).remove()
                         })
-                        console.log($(this).text())
+                        ougiDescript[ougiIdx] = $(this).text()
+                        //console.log($(this).text())
+                        console.log(ougiDescript[ougiIdx])
                     }
                 }
             })
