@@ -63,6 +63,8 @@ module.exports = async (url) => {
         $(".table-container:eq(2)").each (function (i, elem) {
             $(".wikitable>tbody>tr", this).children().each( function (i, elem) {
                 if (i === 0 || i > 6) {
+                    //Saving skill-set name with i === 0
+                    //Maybe have it as a separate branch
                     console.log(i)
                     console.log($(this).text())
                 }
