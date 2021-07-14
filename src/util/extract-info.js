@@ -60,13 +60,16 @@ module.exports = async (url) => {
         //For dual form charas, most of them have a .table-container length of 9
         //Might be able to make a filter for that
 
+        dform_v = $(".table-container").length
+        console.log(dform_v)
+
         $(".table-container:eq(2)").each (function (i, elem) {
             $(".wikitable>tbody>tr", this).children().each( function (i, elem) {
                 if (i === 0 || i > 6) {
                     //Saving skill-set name with i === 0
                     //Maybe have it as a separate branch
-                    console.log(i)
-                    console.log($(this).text())
+                    //console.log(i)
+                    //console.log($(this).text())
                 }
                 
             })
