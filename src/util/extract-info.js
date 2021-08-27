@@ -63,6 +63,10 @@ module.exports = async (url) => {
         //For dual form charas, most of them have a .table-container length of 9
         //Might be able to make a filter for that
 
+        //08-27-21: There are characters with 3 forms, might just have to make
+        //Skill Set 2 + as an array of arrays to generalize it
+        //Current character with 3 forms is Malinda(Event)
+
         const testV = $(".table-container").length
         var twoFormBool
         if (testV === 8) {
@@ -72,6 +76,9 @@ module.exports = async (url) => {
         else if (testV === 9) {
             twoFormBool = true
             console.log("This character has two skill sets")
+        }
+        else if(testV === 10) {
+            console.log("This character has three skill sets")
         }
 
         $(".table-container:eq(2)").each (function (i, elem) {
